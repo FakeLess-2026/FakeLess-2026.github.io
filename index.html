@@ -70,13 +70,32 @@
     </main>
 
     <script>
-        // Smooth Scrolling logic in JS
+        // Smooth Scrolling logic in JS for all internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Function for explicit calls (like the mouse icon)
         function smoothScroll(target) {
             const element = document.querySelector(target);
-            window.scrollTo({
-                top: element.offsetTop,
-                behavior: 'smooth'
-            });
+            if (element) {
+                window.scrollTo({
+                    top: element.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
         }
 
         // Reveal animations on scroll

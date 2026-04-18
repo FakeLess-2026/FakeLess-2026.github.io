@@ -53,7 +53,17 @@ body {
     color: var(--neon-glow);
 }
 
-/* Hero Section: Text in middle */
+/* Hero Section: Text in middle with background image */
+.hero {
+    background: linear-gradient(rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.8)), 
+                url('background/robynne-o-HOrhCnQsxnQ-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+}
+
 .section {
     min-height: 100vh;
     display: flex;
