@@ -110,6 +110,61 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+        // Matrix Effect Logic
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for (let x = 0; x < columns; x++) drops[x] = 1;
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(2, 6, 23, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#2563eb"; // Neon Blue Matrix
+            ctx.font = fontSize + "px monospace";
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+                    drops[i] = 0;
+
+                drops[i]++;
+            }
+        }
+
+        let matrixInterval;
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY;
+            const heroHeight = document.getElementById('home').offsetHeight;
+            const canvasEl = document.getElementById('matrix-canvas');
+
+            if (scrollPos > heroHeight * 0.5) {
+                canvasEl.style.opacity = '0.15'; // Subtle background effect
+                if (!matrixInterval) matrixInterval = setInterval(drawMatrix, 50);
+            } else {
+                canvasEl.style.opacity = '0';
+                if (matrixInterval) {
+                    clearInterval(matrixInterval);
+                    matrixInterval = null;
+                }
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        </script>
         // Navigation button functionality
         document.querySelector('.logo-box').addEventListener('click', (e) => {
             e.preventDefault();
