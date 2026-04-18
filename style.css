@@ -201,10 +201,25 @@ body {
 .code-container {
     background: #000;
     padding: 2rem;
-    min-height: 200px;
+    min-height: 150px;
+    text-align: left;
+    font-family: 'Fira Code', 'Courier New', monospace;
 }
 
-.code-placeholder {
-    color: #475569;
-    font-family: monospace;
+.code-line {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    color: #e2e8f0;
+}
+
+.comment {
+    color: #64748b;
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+.prompt {
+    color: var(--neon-glow);
+    margin-right: 10px;
+    user-select: none;
 }
