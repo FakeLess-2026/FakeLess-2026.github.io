@@ -9,13 +9,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <div id="loader">
+        <div class="loader-content">
+            <img src="logo/logo_bez_tla.png" alt="FakeLess Logo" class="loader-logo">
+            <h1 class="loader-text">FakeLess</h1>
+        </div>
+    </div>
+
     <header>
         <nav>
             <div class="logo-container">
                 <img src="logo/logo_bez_tla.png" alt="FakeLess Logo" class="logo">
                 <span class="brand-name">FakeLess</span>
             </div>
-            <a href="https://github.com/jabaldoo/HackCarpathia-Starship" target="_blank" class="github-link">
+            <a href="https://github.com/jabaldoo/HackCarpathia-Starship" target="_blank" class="github-icon-link">
                 <i class="fab fa-github"></i>
             </a>
         </nav>
@@ -23,10 +30,23 @@
 
     <main>
         <section class="hero">
-            <h1>Protect Your Digital Space</h1>
-            <p>FakeLess is a powerful browser extension designed to block adult content, offensive language, and deepfake content on video calls in real-time.</p>
-            <div class="cta-buttons">
-                <a href="#install" class="btn btn-neon">Get Started</a>
+            <div class="hero-content">
+                <img src="logo/logo_bez_tla.png" alt="FakeLess Logo" class="hero-logo">
+                <h1 class="animate-pop-in">FakeLess</h1>
+                <p class="animate-fade-in">Advanced Protection for Your Digital Experience</p>
+                
+                <div class="hero-actions">
+                    <a href="https://github.com/jabaldoo/HackCarpathia-Starship" target="_blank" class="github-btn">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+
+            <div class="scroll-indicator">
+                <span>Scroll to explore</span>
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
             </div>
         </section>
 
@@ -64,5 +84,16 @@
     <footer>
         <p>&copy; 2026 FakeLess Project - HackCarpathia</p>
     </footer>
+</body>
+</html>
+   }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .installation').forEach(el => {
+            el.classList.add('reveal');
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
