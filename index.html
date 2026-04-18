@@ -122,41 +122,41 @@
         const columns = canvas.width / fontSize;
         const drops = [];
 
-        for (let x = 0; x < columns; x++) drops[x] = 1;
+        for (let x = 0; x < columns; x++) {
+            drops[x] = Math.random() * -100; // Randomize start positions above screen
+        }
 
         function drawMatrix() {
-            ctx.fillStyle = "rgba(2, 6, 23, 0.05)";
+            ctx.fillStyle = "rgba(2, 6, 23, 0.1)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = "#0044ff"; // Deep Neon Blue Matrix
+            ctx.fillStyle = "#0044ff"; 
             ctx.font = fontSize + "px monospace";
 
             for (let i = 0; i < drops.length; i++) {
                 const text = letters.charAt(Math.floor(Math.random() * letters.length));
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
                     drops[i] = 0;
+                }
 
                 drops[i]++;
             }
         }
 
-        let matrixInterval;
+        // Start animation immediately but keep canvas hidden until scroll
+        matrixInterval = setInterval(drawMatrix, 50);
+
         window.addEventListener('scroll', () => {
             const scrollPos = window.scrollY;
             const heroHeight = document.getElementById('home').offsetHeight;
             const canvasEl = document.getElementById('matrix-canvas');
 
-            if (scrollPos > heroHeight * 0.2) {
-                canvasEl.style.opacity = '0.3'; // Stronger opacity for matrix
-                if (!matrixInterval) matrixInterval = setInterval(drawMatrix, 50);
+            if (scrollPos > 100) {
+                canvasEl.style.opacity = '0.3'; 
             } else {
                 canvasEl.style.opacity = '0';
-                if (matrixInterval) {
-                    clearInterval(matrixInterval);
-                    matrixInterval = null;
-                }
             }
         });
 
@@ -170,6 +170,6 @@
             e.preventDefault();
             smoothScroll('#home');
         });
-    </script>    </script>
+    </script>
 </body>
 </html>
