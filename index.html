@@ -128,7 +128,7 @@
             ctx.fillStyle = "rgba(2, 6, 23, 0.05)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = "#2563eb"; // Neon Blue Matrix
+            ctx.fillStyle = "#0044ff"; // Deep Neon Blue Matrix
             ctx.font = fontSize + "px monospace";
 
             for (let i = 0; i < drops.length; i++) {
@@ -148,8 +148,8 @@
             const heroHeight = document.getElementById('home').offsetHeight;
             const canvasEl = document.getElementById('matrix-canvas');
 
-            if (scrollPos > heroHeight * 0.5) {
-                canvasEl.style.opacity = '0.15'; // Subtle background effect
+            if (scrollPos > heroHeight * 0.2) {
+                canvasEl.style.opacity = '0.3'; // Stronger opacity for matrix
                 if (!matrixInterval) matrixInterval = setInterval(drawMatrix, 50);
             } else {
                 canvasEl.style.opacity = '0';
@@ -164,12 +164,12 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         });
-        </script>
+
         // Navigation button functionality
         document.querySelector('.logo-box').addEventListener('click', (e) => {
             e.preventDefault();
             smoothScroll('#home');
         });
-    </script>
+    </script>    </script>
 </body>
 </html>
