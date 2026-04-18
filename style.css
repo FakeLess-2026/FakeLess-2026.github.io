@@ -34,8 +34,8 @@ body {
 }
 
 .top-logo {
-    height: 45px;
-    filter: drop-shadow(0 0 8px var(--neon-blue));
+    height: 80px;
+    filter: drop-shadow(0 0 10px var(--neon-blue));
     transition: transform 0.3s;
 }
 
