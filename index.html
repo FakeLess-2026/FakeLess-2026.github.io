@@ -1,29 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FakeLess - Digital Safety</title>
+    <title>FakeLess - Cyfrowe Bezpieczeństwo</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Top-Left Logo -->
+    <canvas id="matrix-canvas"></canvas>
+    <!-- Logo w lewym górnym rogu -->
     <nav class="navbar">
         <a href="#" class="logo-box">
             <img src="logo/logo_bez_tla.png" alt="FakeLess Logo" class="top-logo">
         </a>
-        <a href="https://github.com/jabaldoo/HackCarpathia-Starship" target="_blank" class="nav-git">
-            <i class="fab fa-github"></i>
-        </a>
     </nav>
 
     <main id="main-container">
-        <!-- Hero Section -->
+        <!-- Sekcja Hero -->
         <section class="section hero" id="home">
             <div class="center-content">
                 <h1 class="neon-text">FakeLess</h1>
-                <p class="subtitle">AI-Powered Content Shield</p>
+                <p class="subtitle">Tarcza Treści Wspierana przez AI</p>
                 <div class="hero-actions">
                     <a href="https://github.com/jabaldoo/HackCarpathia-Starship" target="_blank" class="git-button">
                         <i class="fab fa-github"></i> GitHub
@@ -35,7 +33,7 @@
             </div>
         </section>
 
-        <!-- About Section (Polish Description) -->
+        <!-- Sekcja O projekcie -->
         <section class="section" id="about">
             <div class="info-box reveal">
                 <h2>FakeLess: Bezpieczny internet dla Twojego dziecka</h2>
@@ -43,43 +41,43 @@
             </div>
         </section>
 
-        <!-- Features Section -->
+        <!-- Sekcja Funkcje -->
         <section class="section" id="features">
-            <h2 class="section-title">Features</h2>
+            <h2 class="section-title">Funkcje</h2>
             <div class="grid-container">
                 <div class="card reveal">
                     <i class="fas fa-user-shield"></i>
-                    <h3>NSFW Blocking</h3>
-                    <p>Real-time filtering of adult content across your browsing sessions.</p>
+                    <h3>Blokowanie NSFW</h3>
+                    <p>Filtrowanie treści dla dorosłych w czasie rzeczywistym podczas Twoich sesji przeglądania.</p>
                 </div>
                 <div class="card reveal">
                     <i class="fas fa-video"></i>
-                    <h3>Deepfake Guard</h3>
-                    <p>Active detection of synthetic media during live video communication.</p>
+                    <h3>Ochrona przed Deepfake</h3>
+                    <p>Aktywne wykrywanie mediów syntetycznych podczas komunikacji wideo na żywo.</p>
                 </div>
                 <div class="card reveal">
                     <i class="fas fa-comment-slash"></i>
-                    <h3>Profanity Filter</h3>
-                    <p>Removes offensive language to keep your environment professional and safe.</p>
+                    <h3>Filtr Przekleństw</h3>
+                    <p>Usuwa obraźliwy język, aby Twoje otoczenie było profesjonalne i bezpieczne.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Installation Section -->
+        <!-- Sekcja Instalacja -->
         <section class="section" id="install">
-            <h2 class="section-title">Installation</h2>
+            <h2 class="section-title">Instalacja</h2>
             <div class="install-box">
                 <div id="user-code-area" class="code-container">
                     <div class="code-line"><span class="prompt">$</span> git clone https://github.com/jabaldoo/HackCarpathia-Starship</div>
                     <div class="code-line"><span class="prompt">$</span> cd HackCarpathia-Starship</div>
-                    <div class="code-line comment"># Open manifest.json in your browser of choice in debug options</div>
+                    <div class="code-line comment"># Otwórz manifest.json w wybranej przeglądarce w opcjach debugowania</div>
                 </div>
             </div>
         </section>
     </main>
 
     <script>
-        // Smooth Scrolling logic in JS for all internal links
+        // Logika płynnego przewijania w JS
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -96,7 +94,6 @@
             });
         });
 
-        // Function for explicit calls (like the mouse icon)
         function smoothScroll(target) {
             const element = document.querySelector(target);
             if (element) {
@@ -107,7 +104,7 @@
             }
         }
 
-        // Reveal animations on scroll
+        // Animacje ujawniania przy przewijaniu
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -118,7 +115,7 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Matrix Effect Logic
+        // Logika efektu Matrix
         const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -131,7 +128,7 @@
         const drops = [];
 
         for (let x = 0; x < columns; x++) {
-            drops[x] = Math.random() * -100; // Randomize start positions above screen
+            drops[x] = Math.random() * -100;
         }
 
         function drawMatrix() {
@@ -153,12 +150,10 @@
             }
         }
 
-        // Start animation immediately but keep canvas hidden until scroll
-        matrixInterval = setInterval(drawMatrix, 50);
+        let matrixInterval = setInterval(drawMatrix, 50);
 
         window.addEventListener('scroll', () => {
             const scrollPos = window.scrollY;
-            const heroHeight = document.getElementById('home').offsetHeight;
             const canvasEl = document.getElementById('matrix-canvas');
 
             if (scrollPos > 100) {
@@ -173,7 +168,6 @@
             canvas.height = window.innerHeight;
         });
 
-        // Navigation button functionality
         document.querySelector('.logo-box').addEventListener('click', (e) => {
             e.preventDefault();
             smoothScroll('#home');
