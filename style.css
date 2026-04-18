@@ -196,34 +196,36 @@ body {
 }
 
 .info-box {
-    background: var(--navy-deep);
-    padding: 4rem;
-    border-radius: 40px;
-    width: 100%;
-    max-width: 650px;
-    aspect-ratio: 1 / 1; /* Makes it a square */
+    background: rgba(15, 23, 42, 0.9);
+    padding: 3rem;
+    border-radius: 20px;
+    width: 600px;
+    height: 600px; /* Explicit square */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid rgba(37, 99, 235, 0.3);
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+    border: 4px solid var(--neon-blue); /* Thicker frame */
+    box-shadow: 0 0 20px var(--neon-blue), 
+                inset 0 0 20px var(--neon-blue);
     text-align: center;
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(10px);
 }
 
 .info-box h2 {
-    color: var(--neon-glow);
-    font-size: 2.2rem;
+    color: #fff;
+    text-shadow: 0 0 10px var(--neon-blue);
+    font-size: 2rem;
     margin-bottom: 2rem;
-    line-height: 1.2;
+    line-height: 1.3;
 }
 
 .info-box p {
-    font-size: 1.15rem;
-    line-height: 1.6;
-    color: var(--text-primary);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #cbd5e1;
 }
 
 /* Features Section Title Adjust */
