@@ -3,96 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FakeLess - Stay Safe Online</title>
+    <title>FakeLess - Digital Safety</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for the GitHub icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div id="loader">
-        <div class="loader-content">
-            <img src="logo/logo_bez_tla.png" alt="FakeLess Logo" class="loader-logo">
-            <h1 class="loader-text">FakeLess</h1>
-        </div>
-    </div>
+    <!-- Top-Left Logo -->
+    <nav class="navbar">
+        <a href="#" class="logo-box">
+            <img src="logo/logo_bez_tla.png" alt="FakeLess Logo" class="top-logo">
+        </a>
+        <a href="https://github.com/jabaldoo/HackCarpathia-Starship" target="_blank" class="nav-git">
+            <i class="fab fa-github"></i>
+        </a>
+    </nav>
 
-    <header>
-        <nav>
-            <div class="logo-container">
-                <img src="logo/logo_bez_tla.png" alt="FakeLess Logo" class="logo">
-                <span class="brand-name">FakeLess</span>
-            </div>
-            <a href="https://github.com/jabaldoo/HackCarpathia-Starship" target="_blank" class="github-icon-link">
-                <i class="fab fa-github"></i>
-            </a>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <img src="logo/logo_bez_tla.png" alt="FakeLess Logo" class="hero-logo">
-                <h1 class="animate-pop-in">FakeLess</h1>
-                <p class="animate-fade-in">Advanced Protection for Your Digital Experience</p>
-                
+    <main id="main-container">
+        <!-- Hero Section -->
+        <section class="section hero" id="home">
+            <div class="center-content">
+                <h1 class="neon-text">FakeLess</h1>
+                <p class="subtitle">AI-Powered Content Shield</p>
                 <div class="hero-actions">
-                    <a href="https://github.com/jabaldoo/HackCarpathia-Starship" target="_blank" class="github-btn">
-                        <i class="fab fa-github"></i> View on GitHub
+                    <a href="https://github.com/jabaldoo/HackCarpathia-Starship" target="_blank" class="git-button">
+                        <i class="fab fa-github"></i> GitHub
                     </a>
                 </div>
             </div>
+            <div class="scroll-prompt" onclick="smoothScroll('#features')">
+                <div class="mouse-icon"></div>
+            </div>
+        </section>
 
-            <div class="scroll-indicator">
-                <span>Scroll to explore</span>
-                <div class="mouse">
-                    <div class="wheel"></div>
+        <!-- Features Section -->
+        <section class="section" id="features">
+            <h2 class="section-title">Features</h2>
+            <div class="grid-container">
+                <div class="card reveal">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>NSFW Blocking</h3>
+                    <p>Real-time filtering of adult content across your browsing sessions.</p>
+                </div>
+                <div class="card reveal">
+                    <i class="fas fa-video"></i>
+                    <h3>Deepfake Guard</h3>
+                    <p>Active detection of synthetic media during live video communication.</p>
+                </div>
+                <div class="card reveal">
+                    <i class="fas fa-comment-slash"></i>
+                    <h3>Profanity Filter</h3>
+                    <p>Removes offensive language to keep your environment professional and safe.</p>
                 </div>
             </div>
         </section>
 
-        <section id="features" class="features">
-            <div class="feature-card">
-                <i class="fas fa-shield-halved"></i>
-                <h3>Content Filtering</h3>
-                <p>Advanced algorithms to filter out adult content and curses automatically.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-video-slash"></i>
-                <h3>Deepfake Detection</h3>
-                <p>Stay secure during video calls with our cutting-edge deepfake blocking technology.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-browser"></i>
-                <h3>Seamless Integration</h3>
-                <p>Works quietly in your browser without slowing down your experience.</p>
-            </div>
-        </section>
-
-        <section id="install" class="installation">
-            <h2>Installation</h2>
-            <p>Follow the steps below to secure your browser with FakeLess.</p>
-            <!-- Small window for manual code addition as requested -->
-            <div class="code-window-container">
-                <div id="installation-code-placeholder" class="code-window">
-                    <!-- User will manually add code here -->
-                    <p style="color: #888; font-style: italic;">[Installation instructions/code will be added here]</p>
+        <!-- Installation Section -->
+        <section class="section" id="install">
+            <h2 class="section-title">Installation</h2>
+            <div class="install-box">
+                <div id="user-code-area" class="code-container">
+                    <!-- Manual code addition here -->
+                    <span class="code-placeholder">// Add your installation code here</span>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 FakeLess Project - HackCarpathia</p>
-    </footer>
-</body>
-</html>
-   }
+    <script>
+        // Smooth Scrolling logic in JS
+        function smoothScroll(target) {
+            const element = document.querySelector(target);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
             });
-        }, observerOptions);
+        }
 
-        document.querySelectorAll('.feature-card, .installation').forEach(el => {
-            el.classList.add('reveal');
-            observer.observe(el);
+        // Reveal animations on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Navigation button functionality
+        document.querySelector('.logo-box').addEventListener('click', (e) => {
+            e.preventDefault();
+            smoothScroll('#home');
         });
     </script>
 </body>
